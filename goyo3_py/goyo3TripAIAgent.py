@@ -7,7 +7,7 @@ from openai import OpenAI
 app = FastAPI(title="Free Trip Planner")
 
 # Use OpenAI API key from environment variable
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")  # ✅ no hardcoded key
+OPENAI_API_KEY = os.getenv("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")  # ✅ no hardcoded key
 client = OpenAI(api_key=OPENAI_API_KEY)
 
 # Hobby -> Overpass tags
@@ -107,6 +107,7 @@ def plan_trip(city: str, budget: int, duration: int, hobby: str):
         return {"error": "No POIs found for this city/hobby"}
     itinerary = generate_itinerary(city, budget, duration, hobby, pois)
     return {"plan": itinerary, "pois": pois[:5]}
+
 
 
 
